@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chron Time Standard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      // Configure Tailwind to use Fira Mono
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              mono: ['"Fira Mono"', "monospace"],
+            },
+          },
+        },
+      };
+    </script>
+    <style type="text/tailwindcss">
+      /* Custom base styles */
+      body {
+        @apply font-mono bg-gray-100 text-gray-800;
+      }
+      /* Ensure table is centered within its container */
+      table {
+        @apply mx-auto; /* Center the table */
+      }
+    </style>
+  </head>
+  <body class="flex flex-col min-h-screen">
+    <header
+      class="py-8 px-4 text-center border-b border-gray-300 bg-white shadow-sm rounded-b-lg"
+    >
+      <h1 class="text-3xl font-semibold text-gray-900 mb-2">
+        Chron Time Standard
+      </h1>
+      <p class="text-gray-600">A minimalist approach to measuring time</p>
+    </header>
+
+    <main class="flex-grow p-6 lg:p-8 max-w-4xl mx-auto w-full">
+      <section class="mb-10 text-center">
+        <h2 class="text-2xl font-medium text-gray-900 mb-4">
+          Live Chron Clocks
+        </h2>
+        <div
+          id="chronClockFormatted"
+          class="text-xl p-3 mb-2 bg-blue-100 text-blue-900 rounded-lg shadow"
+        >
+          Loading...
+        </div>
+        <div
+          id="chronClockOriginal"
+          class="text-xl p-3 bg-gray-200 text-black rounded-lg shadow"
+        >
+          Loading...
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-medium text-gray-900 mb-6 text-center">
+          Conversion Table
+        </h2>
+        <p class="text-center text-gray-600 mb-4 text-sm">
+          Showing how many standard units are equivalent to 1 Chron unit.
+        </p>
+        <div class="overflow-x-auto rounded-lg shadow">
+          <table class="w-full min-w-[600px] border-collapse text-sm bg-white">
+            <thead class="bg-gray-200">
+              <tr>
+                <th
+                  class="border border-gray-300 p-3 font-semibold text-center"
+                >
+                  Equivalent to 1 →<br />Standard Unit ↓
+                </th>
+                <th
+                  class="border border-gray-300 p-3 font-semibold text-center"
+                >
+                  Centichron
+                </th>
+                <th
+                  class="border border-gray-300 p-3 font-semibold text-center"
+                >
+                  Decichron
+                </th>
+                <th
+                  class="border border-gray-300 p-3 font-semibold text-center"
+                >
+                  Chron
+                </th>
+                <th
+                  class="border border-gray-300 p-3 font-semibold text-center"
+                >
+                  Dekachron
+                </th>
+                <th
+                  class="border border-gray-300 p-3 font-semibold text-center"
+                >
+                  Hectochron
+                </th>
+                <th
+                  class="border border-gray-300 p-3 font-semibold text-center"
+                >
+                  Kilochron
+                </th>
+                <th
+                  class="border border-gray-300 p-3 font-semibold text-center"
+                >
+                  Megachron
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td
+                  class="border border-gray-300 p-3 text-center font-semibold"
+                >
+                  Seconds
+                </td>
+                <td class="border border-gray-300 p-3 text-center">0.864</td>
+                <td class="border border-gray-300 p-3 text-center">8.64</td>
+                <td class="border border-gray-300 p-3 text-center">86.4</td>
+                <td class="border border-gray-300 p-3 text-center">864</td>
+                <td class="border border-gray-300 p-3 text-center">8,640</td>
+                <td class="border border-gray-300 p-3 text-center">86,400</td>
+                <td class="border border-gray-300 p-3 text-center">
+                  86,400,000
+                </td>
+              </tr>
+              <tr>
+                <td
+                  class="border border-gray-300 p-3 text-center font-semibold"
+                >
+                  Minutes
+                </td>
+                <td class="border border-gray-300 p-3 text-center">0.0144</td>
+                <td class="border border-gray-300 p-3 text-center">0.144</td>
+                <td class="border border-gray-300 p-3 text-center">1.44</td>
+                <td class="border border-gray-300 p-3 text-center">14.4</td>
+                <td class="border border-gray-300 p-3 text-center">144</td>
+                <td class="border border-gray-300 p-3 text-center">1,440</td>
+                <td class="border border-gray-300 p-3 text-center">
+                  1,440,000
+                </td>
+              </tr>
+              <tr>
+                <td
+                  class="border border-gray-300 p-3 text-center font-semibold"
+                >
+                  Hours
+                </td>
+                <td class="border border-gray-300 p-3 text-center">0.00024</td>
+                <td class="border border-gray-300 p-3 text-center">0.0024</td>
+                <td class="border border-gray-300 p-3 text-center">0.024</td>
+                <td class="border border-gray-300 p-3 text-center">0.24</td>
+                <td class="border border-gray-300 p-3 text-center">2.4</td>
+                <td class="border border-gray-300 p-3 text-center">24</td>
+                <td class="border border-gray-300 p-3 text-center">24,000</td>
+              </tr>
+              <tr>
+                <td
+                  class="border border-gray-300 p-3 text-center font-semibold"
+                >
+                  Days
+                </td>
+                <td class="border border-gray-300 p-3 text-center">0.00001</td>
+                <td class="border border-gray-300 p-3 text-center">0.0001</td>
+                <td class="border border-gray-300 p-3 text-center">0.001</td>
+                <td class="border border-gray-300 p-3 text-center">0.01</td>
+                <td class="border border-gray-300 p-3 text-center">0.1</td>
+                <td class="border border-gray-300 p-3 text-center">1</td>
+                <td class="border border-gray-300 p-3 text-center">1,000</td>
+              </tr>
+              <tr>
+                <td
+                  class="border border-gray-300 p-3 text-center font-semibold"
+                >
+                  Chrons
+                </td>
+                <td class="border border-gray-300 p-3 text-center">0.01</td>
+                <td class="border border-gray-300 p-3 text-center">0.1</td>
+                <td class="border border-gray-300 p-3 text-center">1</td>
+                <td class="border border-gray-300 p-3 text-center">10</td>
+                <td class="border border-gray-300 p-3 text-center">100</td>
+                <td class="border border-gray-300 p-3 text-center">1,000</td>
+                <td class="border border-gray-300 p-3 text-center">
+                  1,000,000
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <footer
+      class="text-center p-4 mt-10 border-t border-gray-300 text-xs text-gray-500 bg-white rounded-t-lg"
+    >
+      &copy; 2025 Chron Time Initiative. All rights reserved.
+    </footer>
+
+    <script>
+      /**
+       * Updates the Chron Clock displays.
+       */
+      function updateChronClock() {
+        // Get clock elements
+        const clockOriginalElement =
+          document.getElementById("chronClockOriginal");
+        const clockFormattedElement = document.getElementById(
+          "chronClockFormatted"
+        );
+
+        // Basic error checking
+        if (!clockOriginalElement || !clockFormattedElement) {
+          console.error("One or more clock elements not found!");
+          if (clockOriginalElement) clockOriginalElement.textContent = "Error";
+          if (clockFormattedElement)
+            clockFormattedElement.textContent = "Error";
+          return; // Exit if elements don't exist
+        }
+
+        // --- Shared Calculations ---
+        // Base date for calculation (January 1, 2000 UTC)
+        const base = new Date("2000-01-01T00:00:00Z");
+        const now = new Date();
+
+        // Calculate elapsed milliseconds since the base date
+        const elapsedMs = now.getTime() - base.getTime();
+
+        // Calculate total centichrons (1 centichron = 864 ms)
+        // Using Math.max to prevent negative values
+        const totalCentichrons = Math.max(0, Math.floor(elapsedMs / 864));
+
+        // --- Original Clock (M:K:H:D:C:d:c) ---
+        const mega_o = Math.floor(totalCentichrons / 100000000);
+        const kilo_o = Math.floor((totalCentichrons % 100000000) / 100000);
+        const hecto_o = Math.floor((totalCentichrons % 100000) / 10000);
+        const deka_o = Math.floor((totalCentichrons % 10000) / 1000);
+        const chron_o = Math.floor((totalCentichrons % 1000) / 100);
+        const deci_o = Math.floor((totalCentichrons % 100) / 10);
+        const centi_o = totalCentichrons % 10;
+
+        // Format the original time string
+        const formattedTimeOriginal =
+          `${mega_o}:` +
+          `${String(kilo_o).padStart(3, "0")}:` + // Pad Kilochron (days)
+          `${hecto_o}:` +
+          `${deka_o}:` +
+          `${chron_o}:` +
+          `${deci_o}:` +
+          `${centi_o}`;
+
+        // Update the original clock display
+        clockOriginalElement.textContent = `Full Chron: ${formattedTimeOriginal}`;
+
+        // --- Formatted Clock (YYYY-MM-DD H:DC:dc) ---
+        // Calculate total Kilochrons (days) elapsed since base date
+        const totalKilochrons = Math.floor(totalCentichrons / 100000);
+
+        // Calculate the current date by adding elapsed days to the base date
+        // Create a new date object to avoid modifying the 'base' object
+        const currentDate = new Date(base.getTime());
+        currentDate.setUTCDate(currentDate.getUTCDate() + totalKilochrons);
+
+        // Format the date part (YYYY-MM-DD)
+        const year = currentDate.getUTCFullYear();
+        const month = String(currentDate.getUTCMonth() + 1).padStart(2, "0"); // Months are 0-indexed
+        const day = String(currentDate.getUTCDate()).padStart(2, "0");
+        const formattedDate = `${year}-${month}-${day}`;
+
+        // Calculate remaining centichrons within the current day
+        const remainingCentichrons = totalCentichrons % 100000;
+
+        // Calculate H, D, C, d, c based on the remaining centichrons for the day
+        const hecto_f = Math.floor(remainingCentichrons / 10000);
+        const deka_f = Math.floor((remainingCentichrons % 10000) / 1000);
+        const chron_f = Math.floor((remainingCentichrons % 1000) / 100);
+        const deci_f = Math.floor((remainingCentichrons % 100) / 10);
+        const centi_f = remainingCentichrons % 10;
+
+        // Combine and format DC and dc parts, padding to 2 digits
+        const formattedDC = String(deka_f * 10 + chron_f).padStart(2, "0");
+        const formatteddc = String(deci_f * 10 + centi_f).padStart(2, "0");
+
+        // Combine date and formatted time
+        const formattedTimeNew = `${formattedDate} ${hecto_f}:${formattedDC}:${formatteddc}`;
+
+        // Update the formatted clock display
+        clockFormattedElement.textContent = `Date & Chron: ${formattedTimeNew}`;
+      }
+
+      // Update the clocks every 100 milliseconds
+      setInterval(updateChronClock, 100);
+
+      // Initial call to display the clocks immediately on load
+      document.addEventListener("DOMContentLoaded", updateChronClock);
+    </script>
+  </body>
+</html>
